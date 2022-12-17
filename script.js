@@ -73,6 +73,4 @@ function game() {
     }
 }
 
-
-
 game()

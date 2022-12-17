@@ -1,2 +1,3 @@
-# rock-paper-scissor
-Simple Rock Paper Scissor Game using HTML CSS and Javascript
+# Rock Paper Scissor
+Console based Rock Paper Scissor
+GUI still to be added
