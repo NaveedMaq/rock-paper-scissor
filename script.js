@@ -32,6 +32,7 @@ function playRound(playerChoice, computerChoice) {
 }
 
 function game() {
+    alert("Open Dev Tools to Play");
     let playerScore = 0;
     let computerScore = 0;
     let resultMessage = "NA";
