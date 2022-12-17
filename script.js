@@ -1,3 +1,7 @@
+const PLAYER_WON = 1;
+const COMPUTER_WON = -1;
+const TIE = 0;
+
 function getComputerChoice() {
     let randomInt = Math.floor(Math.random() * 3);
     switch (randomInt) {
@@ -14,40 +18,50 @@ function playRound(playerChoice, computerChoice) {
 
     if (playerChoiceLowerCase)
         if (playerChoiceLowerCase === computerChoiceLowerCase) {
-            return `It's a tie. Both chose ${computerChoice}`;
+            return TIE;
         }
 
     if (
         playerChoiceLowerCase === "rock" && computerChoiceLowerCase === "scissors" ||
         playerChoiceLowerCase === "paper" && computerChoiceLowerCase === "rock" ||
         playerChoiceLowerCase === "scissors" && computerChoiceLowerCase === "paper") {
-        return `You Win! ${playerChoice} beats ${computerChoice}`;
+        return PLAYER_WON;
     } else {
-        return `You Lose! ${computerChoice} beats ${playerChoice}`;
+        return COMPUTER_WON;
     }
 }
 
 function game() {
     let playerScore = 0;
     let computerScore = 0;
-    let result;
+    let resultMessage = "NA";
+
     for (let i = 1; i <= 5; i++) {
-        playerChoice = prompt(`Round ${i}: Rock, Paper, Scissor?`);
+        playerChoice = prompt(`Round ${i}: Rock, Paper, Scissors?`);
+        if(playerChoice === null) {
+            console.log("You quit the game");
+            return;
+        }
         if (playerChoice.toLowerCase() !== "rock" && playerChoice.toLowerCase() !== "paper" && playerChoice.toLowerCase() !== "scissors") {
-            result = `${playerChoice} is not a valid choice`;
+            resultMessage = `${playerChoice} is not a valid choice`;
             i--;
         } else {
+            let result;
             let computerChoice = getComputerChoice();
-
             result = playRound(playerChoice, computerChoice);
-            if (result.startsWith("You Win")) {
+            
+            if (result === PLAYER_WON) {
                 playerScore++;
-            } else if (result.startsWith("You Lose")) {
+                resultMessage = `You Win! ${playerChoice} beats ${computerChoice}`;
+            } else if (result === COMPUTER_WON) {
                 computerScore++;
+                resultMessage = `You Lose! ${computerChoice} beats ${playerChoice}`;
+            } else if(result === TIE) {
+                resultMessage = `It's a tie. Both chose ${computerChoice}`;
             }
         }
 
-        console.log(result + `\nYou: ${playerScore}. Computer: ${computerScore}`)
+        console.log(resultMessage + `\nYou: ${playerScore}. Computer: ${computerScore}`)
     }
 
     if (playerScore === computerScore) {
@@ -58,5 +72,7 @@ function game() {
         console.log(`Final Result: You Lose\nYour score: ${playerScore}\nComputerScore: ${computerScore}`)
     }
 }
+
+
 
 game()
