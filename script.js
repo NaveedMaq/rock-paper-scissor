@@ -5,6 +5,7 @@ const TIE = 0;
 const PLAYER_WON_MESSAGE = 'Player Won Round!';
 const COMPUTER_WON_MESSAGE = 'Computer Won Round!';
 const TIE_MESSAGE = 'Round Tied!';
+const GAME_OVER_MESSAGE = 'Game Over!'
 
 function getComputerChoice() {
     let randomInt = Math.floor(Math.random() * 3);
@@ -115,6 +116,11 @@ function uiGame() {
         refreshText('div.round span', round);
         refreshText('.score-board .computer span', computerScore);
         refreshText('.score-board .player span', playerScore);
+
+        if(playerScore == 5 || computerScore == 5) {
+            refreshText('#banner h2', GAME_OVER_MESSAGE + ((playerScore === 5) ? " Player Won Game" : " Computer Won Game"))
+            return;
+        }
     }));
   
 }
