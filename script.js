@@ -31,47 +31,47 @@ function playRound(playerChoice, computerChoice) {
     }
 }
 
-function game() {
-    alert("Open Dev Tools to Play");
-    let playerScore = 0;
-    let computerScore = 0;
-    let resultMessage = "NA";
+// function game() {
+//     alert("Open Dev Tools to Play");
+//     let playerScore = 0;
+//     let computerScore = 0;
+//     let resultMessage = "NA";
 
-    for (let i = 1; i <= 5; i++) {
-        playerChoice = prompt(`Round ${i}: Rock, Paper, Scissors?`);
-        if(playerChoice === null) {
-            console.log("You quit the game");
-            return;
-        }
-        if (playerChoice.toLowerCase() !== "rock" && playerChoice.toLowerCase() !== "paper" && playerChoice.toLowerCase() !== "scissors") {
-            resultMessage = `${playerChoice} is not a valid choice`;
-            i--;
-        } else {
-            let result;
-            let computerChoice = getComputerChoice();
-            result = playRound(playerChoice, computerChoice);
+//     for (let i = 1; i <= 5; i++) {
+//         playerChoice = prompt(`Round ${i}: Rock, Paper, Scissors?`);
+//         if(playerChoice === null) {
+//             console.log("You quit the game");
+//             return;
+//         }
+//         if (playerChoice.toLowerCase() !== "rock" && playerChoice.toLowerCase() !== "paper" && playerChoice.toLowerCase() !== "scissors") {
+//             resultMessage = `${playerChoice} is not a valid choice`;
+//             i--;
+//         } else {
+//             let result;
+//             let computerChoice = getComputerChoice();
+//             result = playRound(playerChoice, computerChoice);
             
-            if (result === PLAYER_WON) {
-                playerScore++;
-                resultMessage = `You Win! ${playerChoice} beats ${computerChoice}`;
-            } else if (result === COMPUTER_WON) {
-                computerScore++;
-                resultMessage = `You Lose! ${computerChoice} beats ${playerChoice}`;
-            } else if(result === TIE) {
-                resultMessage = `It's a tie. Both chose ${computerChoice}`;
-            }
-        }
+//             if (result === PLAYER_WON) {
+//                 playerScore++;
+//                 resultMessage = `You Win! ${playerChoice} beats ${computerChoice}`;
+//             } else if (result === COMPUTER_WON) {
+//                 computerScore++;
+//                 resultMessage = `You Lose! ${computerChoice} beats ${playerChoice}`;
+//             } else if(result === TIE) {
+//                 resultMessage = `It's a tie. Both chose ${computerChoice}`;
+//             }
+//         }
 
-        console.log(resultMessage + `\nYou: ${playerScore}. Computer: ${computerScore}`)
-    }
+//         console.log(resultMessage + `\nYou: ${playerScore}. Computer: ${computerScore}`)
+//     }
 
-    if (playerScore === computerScore) {
-        console.log(`Final Result: It's a tie. Both scored ${playerScore} points`)
-    } else if (playerScore > computerScore) {
-        console.log(`Final Result: You Win\nYour score: ${playerScore}\nComputerScore: ${computerScore}`)
-    } else {
-        console.log(`Final Result: You Lose\nYour score: ${playerScore}\nComputerScore: ${computerScore}`)
-    }
-}
+//     if (playerScore === computerScore) {
+//         console.log(`Final Result: It's a tie. Both scored ${playerScore} points`)
+//     } else if (playerScore > computerScore) {
+//         console.log(`Final Result: You Win\nYour score: ${playerScore}\nComputerScore: ${computerScore}`)
+//     } else {
+//         console.log(`Final Result: You Lose\nYour score: ${playerScore}\nComputerScore: ${computerScore}`)
+//     }
+// }
 
-game()
+// game()
